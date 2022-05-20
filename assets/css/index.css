@@ -1,0 +1,59 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+main {
+    height: 97vh;
+    background-color: #E6E7E1;
+}
+
+main .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 30px 30px;
+}
+
+.home-title h1 {
+    font-size: 4rem;
+}
+
+.home-title .cta{
+    margin-top: 40px;
+}
+
+.home-title .btn {
+    text-decoration: none;
+    padding: 20px 20px;
+    border-radius: 5px;   
+}
+
+a.register {
+    background-color: #333534;
+    color: white;
+}
+
+a.sign_in {
+    margin-left: 30px;
+    background-color: blueviolet;
+    color: white;
+}
+
+h1 > span {
+    color: blueviolet;
+}
+
+img.home-image {
+  width: 55%;
+  border-radius: 10px;
+}
+
+footer {
+    text-align: center;
+     background-color: #E6E7E1;
+}
