@@ -1,17 +1,3 @@
-*, *::after, *::before {
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    font-size: 16px;
-}
-
-main {
-    height: 97vh;
-    background-color: #E6E7E1;
-}
-
 main .container {
     display: flex;
     justify-content: center;
@@ -51,9 +37,4 @@ h1 > span {
 img.home-image {
   width: 55%;
   border-radius: 10px;
-}
-
-footer {
-    text-align: center;
-     background-color: #E6E7E1;
 }

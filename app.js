@@ -1,4 +1,5 @@
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
 
 const app = express();
 const port = 5000;
@@ -6,23 +7,32 @@ const port = 5000;
 //use static files
 app.use(express.static('assets'));
 
+// extract style and script from a sub-page to layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+
 // set up ejs
+app.use(expressLayouts);
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
 // routes
 app.get('/', (req, res) => {
-  res.render('index', {
+  res.render('home', {
     title: 'Habbit Tracker',
   });
 });
 
-app.post('/user/register', (req, res) => {
-  res.send('register user');
+app.get('/user/register', (req, res) => {
+  res.render('register', {
+    title: 'Sign Up',
+  });
 });
 
-app.post('/user/login', (req, res) => {
-  res.send('login user');
+app.get('/user/login', (req, res) => {
+  res.render('signin', {
+    title: 'Sign-In',
+  });
 });
 
 app.listen(port, () => {
