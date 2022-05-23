@@ -1,11 +1,20 @@
+require('dotenv').config();
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
-
 const app = express();
 const port = 5000;
+const connectDB = require('./db/config');
+const cookieParser = require('cookie-parser');
+
+const homeRoutes = require('./routes');
 
 //use static files
 app.use(express.static('assets'));
+
+// to extract form data & json data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
 
 // extract style and script from a sub-page to layout
 app.set('layout extractStyles', true);
@@ -17,24 +26,17 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 // routes
-app.get('/', (req, res) => {
-  res.render('home', {
-    title: 'Habbit Tracker',
-  });
-});
+app.use('/', homeRoutes);
 
-app.get('/user/register', (req, res) => {
-  res.render('register', {
-    title: 'Sign Up',
-  });
-});
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGO_URI);
+    app.listen(port, () => {
+      console.log(`server is up and running at port ${port}...`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-app.get('/user/login', (req, res) => {
-  res.render('signin', {
-    title: 'Sign-In',
-  });
-});
-
-app.listen(port, () => {
-  console.log(`server is up and running at port ${port}...`);
-});
+start();
