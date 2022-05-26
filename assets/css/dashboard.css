@@ -1,0 +1,201 @@
+header.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    font-family: sans-serif;
+    background-color: #333;
+    color: #fff;
+}
+
+.navbar i {
+    color: orange;
+}
+
+.navbar > h2 > span {
+    color: blueviolet;
+}
+
+.navbar .user-name {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-right: 10px;
+}
+
+.user .logout-btn {
+    text-decoration: none;
+    background-color: teal;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+
+/* ========================== habbit section ============================= */
+
+.habbit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 100px auto;
+    border-radius: 5px;
+    padding: 20px;
+    /* background-color: #99C4C8; */
+}
+
+.habbit-container form {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+form .add-btn {
+    padding: 10px;
+    background-color: palegreen;
+    border: none;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: #25ce25;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar h2 {
+        font-size: 1.3rem;
+    }
+    .navbar .user {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .navbar .user-name {
+        font-size: 1rem;
+    }
+    .habbit-container {
+        width: 90%;
+    }
+    form input[type="text"] {
+    width: 85%;
+    }
+}
+
+.views{
+    margin-top: 10px;
+}
+
+.views a {
+    padding:5px 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.views .daily {
+    background-color: brown;
+}
+
+.views .weekly {
+    background-color: teal;
+}
+
+.options span {
+    margin: 0 10px;
+}
+
+i.done {
+    color: #00FFAB;
+}
+
+i.not-done {
+    color: #EC994B;
+}
+
+i.none {
+    color: #FF5D5D;
+}
+
+i.delete {
+    color: red
+}
+
+.list-habbits {
+    width: 100%;
+}
+
+.list-habbits li {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #99C4C8;
+    border-radius: 5px;
+}
+
+li.daily-view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+/* ======================= weekly view ======================== */
+
+li.weekly-view {
+    display: flex;
+    align-items: center;
+}
+
+.weekly-view .habbit-name {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.weekly-view .weekly-calender {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 2;
+}
+
+.weekly-calender .day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    background-color:#fff;
+}
+
+.day .day-date {
+    padding: 3px;
+    border-radius:5px 5px 0 0;
+    background-color: crimson;
+}
+
+.day .status {
+    padding: 5px;
+}
+
+@media screen and (max-width: 997px) {
+    li.weekly-view {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .weekly-calender {
+        margin-top: 20px;
+        gap: 10px;
+    }
+}

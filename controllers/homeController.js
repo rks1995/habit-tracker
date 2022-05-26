@@ -1,3 +1,4 @@
+require('dotenv').config();
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 
@@ -11,12 +12,18 @@ const homeController = (req, res) => {
 };
 
 const signin = (req, res) => {
+  if (req.cookies.tokenKey) {
+    return res.redirect('/user/dashboard');
+  }
   res.render('signin', {
     title: 'Sign In',
   });
 };
 
 const signup = (req, res) => {
+  if (req.cookies.tokenKey) {
+    return res.redirect('/user/dashboard');
+  }
   res.render('register', {
     title: 'Sign Up',
   });
@@ -24,7 +31,6 @@ const signup = (req, res) => {
 
 const createUser = async (req, res) => {
   const { name, email, password, confirm_password } = req.body;
-  console.log(req.body);
   try {
     const user = await User.findOne({ email: email });
     if (!user) {
@@ -47,8 +53,10 @@ const loginUser = async (req, res) => {
     if (user) {
       if (user.password === password) {
         //create token
-        const { id, name } = user;
-        const token = jwt.sign({ id, name }, 'secretkey', { expiresIn: '1h' });
+        const { id, name, views } = user;
+        const token = jwt.sign({ id, name, views }, process.env.SECRET_KEY, {
+          expiresIn: '1h',
+        });
         res.cookie('tokenKey', token);
         return res.redirect('/user/dashboard');
       }

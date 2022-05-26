@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema(
       required: true,
       minlength: 6,
     },
+    views: {
+      type: String,
+      default: 'daily',
+    },
   },
   { timestamps: true }
 );

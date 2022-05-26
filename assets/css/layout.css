@@ -11,6 +11,14 @@ body {
     background-color: #E6E7E1;
 }
 
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
 footer {
     width: 100vw;
     text-align: center;
