@@ -2,8 +2,8 @@
 
 ### ScreenShots
 
-<img src="./assets/HomePage.png" width="200">
-<img src="./assets/DashBoard.png" width="200">
+<img src="./assets/HomePage.png">
+<img src="./assets/Dashboard.png">
 
 #### Tech Used
 
