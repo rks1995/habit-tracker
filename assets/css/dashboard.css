@@ -42,6 +42,7 @@ header.navbar {
     margin: 100px auto;
     border-radius: 5px;
     padding: 20px;
+    text-transform: capitalize;
     /* background-color: #99C4C8; */
 }
 

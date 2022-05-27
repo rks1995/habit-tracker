@@ -7,6 +7,7 @@ const connectDB = require('./db/config');
 const cookieParser = require('cookie-parser');
 
 const homeRoutes = require('./routes');
+const pageNotFound = require('./error/notFound');
 
 //use static files
 app.use(express.static('assets'));
@@ -27,6 +28,9 @@ app.set('views', './views');
 
 // routes
 app.use('/', homeRoutes);
+
+// handle invalid routes
+app.use(pageNotFound);
 
 const start = async () => {
   try {
