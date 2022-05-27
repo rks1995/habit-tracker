@@ -14,16 +14,16 @@
 
 #### Folder Structure
 
-|-assets
+|-assets  
 |-controllers  
-|-db
-|-error
-|-middleware
-|-models
-|-routes
-|-views
-|-gitignore
-|-app.js
-|-package-lock-json
-|-package.json
+|-db  
+|-error  
+|-middleware  
+|-models  
+|-routes  
+|-views  
+|-gitignore  
+|-app.js  
+|-package-lock-json  
+|-package.json  
 |-README.MD
