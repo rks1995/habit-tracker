@@ -34,13 +34,13 @@ const createUser = async (req, res) => {
   try {
     const user = await User.findOne({ email: email });
     if (!user) {
-      if (password === confirm_password) {
+      if (password.length >= 6 && password === confirm_password) {
         //create a user
         const user = await User.create({ name, email, password });
         return res.status(201).redirect('/login');
       }
     }
-    res.status(401).json({ message: 'Error In Creating user' });
+    res.status(400).json({ message: 'password should be of 6 characters' });
   } catch (error) {
     res.status(401).json({ message: error });
   }
@@ -57,7 +57,7 @@ const loginUser = async (req, res) => {
         const token = jwt.sign({ id, name, views }, process.env.SECRET_KEY, {
           expiresIn: '1h',
         });
-        res.cookie('tokenKey', token);
+        res.cookie('tokenKey', token, { overwite: true });
         return res.redirect('/user/dashboard');
       }
     }

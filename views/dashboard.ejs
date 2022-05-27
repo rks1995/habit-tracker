@@ -19,9 +19,9 @@
         <a href="/user/update-view?view=daily" class="daily">Daily</a>
         <a href="/user/update-view?view=weekly" class="weekly">Weekly</a>
     </div>
-    <form action="" method="post">
-        <input type="text" placeholder="Enter Your New Habbit" name="habbit" required>
-        <button class="add-btn">
+    <form action="/user/create-habbit" method="post">
+        <input type="text" placeholder="Enter Your New Habbit" name="content" required>
+        <button type="submit" class="add-btn">
             <i class="fa-solid fa-plus"></i>
         </button>
     </form>
@@ -39,69 +39,85 @@
             None
         </span>
     </div>
+
     <div class="list-habbits">
+        <% if(habbits.length> 0) { %>
         <ul>
             <% if(user.views==="daily" ) { %>
-                <li class="daily-view">
-                    <a href="/user/dashboard">
-                        <i class="fa-solid fa-circle-minus not-done"></i>
-                    </a>
-                    <h1>Going Gym</h1>
+
+            <% for(let i=0; i<habbits.length; i++) { %>
+            <li class="daily-view">
+                <% const {date, status}=habbits[i].dates[0] %>
+                <a href="/user/toggleStatus?id=<%=habbits[i].id%>&date=<%= date %>">
+                    <% if(status=="not-done" ) {%>
+                    <i class="fa-solid fa-circle-minus <%= status %>"></i>
+                    <%} else if(status=="done" ) {%>
+                    <i class="fa-solid fa-circle-check <%= status %>"></i>
+                    <% } else { %>
+                    <i class="fa-solid fa-circle-xmark <%= status %>"></i>
+                    <% } %>
+                </a>
+                <h1>
+                    <%= habbits[i].content %>
+                </h1>
+                <a href="/user/dashboard/:id">
+                    <i class="fa-solid fa-trash delete"></i>
+                </a>
+            </li>
+            <%}%>
+
+            <% } else { %>
+            <% for(let i=0; i<habbits.length; i++) {%>
+            <li class="weekly-view">
+                <div class="title">
+                    <span class="habbit-name">
+                        <%= habbits[i].content %>
+                    </span>
                     <a href="/user/dashboard/:id">
                         <i class="fa-solid fa-trash delete"></i>
                     </a>
-                </li>
-                <li class="daily-view">
-                    <a href="/user/dashboard">
-                        <i class="fa-solid fa-circle-minus done"></i>
-                    </a>
-                    <h1>Study 5hrs</h1>
-                    <a href="/user/dashboard/:id">
-                        <i class="fa-solid fa-trash delete"></i>
-                    </a>
-                </li>
-                <% } else { %>
-                    <li class="weekly-view">
-                        <div class="title">
-                            <span class="habbit-name">Going Gym</span>
-                            <a href="/user/dashboard/:id">
-                                <i class="fa-solid fa-trash delete"></i>
+                </div>
+                <div class="weekly-calender">
+                    <% for(let j=0; j<days.length; j++) { %>
+                    <% const [year, month, date, status]=days[j].date.split('-') %>
+
+                    <div class="day">
+                        <div class="day-date">
+                            <h4>
+                                <%= days[j].day %>,<%= date %>
+                            </h4>
+                        </div>
+                        <div class="status">
+                            <a href="/user/toggleStatus?id=<%=habbits[i].id %>&date=<%=days[j].date%>">
+                                <% let found=false %>
+                                <% habbits[i].dates.find(function(item, index) { %>
+                                <% if(item.date===days[j].date) {%>
+                                <% found=true %>
+                                <% if(item.status==="not-done" ) {%>
+                                <i class="fa-solid fa-circle-minus <%= item.status %>"></i>
+                                <%} else if(item.status=="done" ) {%>
+                                <i class="fa-solid fa-circle-check <%= item.status %>"></i>
+                                <% } else { %>
+                                <i class="fa-solid fa-circle-xmark <%= item.status %>"></i>
+                                <% } %>
+                                <%}%>
+                                <% }) %>
+                                <% if(!found) {%>
+                                <i class="fa-solid fa-circle-minus <%= days[j].status %>"></i>
+                                <% } %>
                             </a>
                         </div>
-                        <div class="weekly-calender">
-                            <div class="day">
-                                <div class="day-date">
-                                    <h4>Wed, 25</h4>
-                                </div>
-                                <div class="status">
-                                    <a href="/user/dashboard">
-                                        <i class="fa-solid fa-circle-minus done"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="day">
-                                <div class="day-date">
-                                    <h4>Wed, 25</h4>
-                                </div>
-                                <div class="status">
-                                    <a href="/user/dashboard">
-                                        <i class="fa-solid fa-circle-minus done"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="day">
-                                <div class="day-date">
-                                    <h4>Wed, 25</h4>
-                                </div>
-                                <div class="status">
-                                    <a href="/user/dashboard">
-                                        <i class="fa-solid fa-circle-minus done"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <% } %>
+                    </div>
+
+                    <%}%>
+                </div>
+                </li>
+                <%}%>
+
+            <% } %>
         </ul>
+        <% } else { %>
+        <h1>Add Habbits</h1>
+        <% } %>
     </div>
 </div>

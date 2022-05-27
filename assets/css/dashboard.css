@@ -162,11 +162,14 @@ li.weekly-view {
     margin-right: 5px;
 }
 
+.weekly-view .title {
+    width: 30%;
+}
+
 .weekly-view .weekly-calender {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex: 2;
+    display: grid;
+    grid-template-columns:repeat(7, 1fr);
+    gap: 10px;
 }
 
 .weekly-calender .day {
@@ -174,28 +177,33 @@ li.weekly-view {
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
+    border-right: 3px solid #c3c3;
     background-color:#fff;
 }
 
 .day .day-date {
+    width: 90%;
     padding: 3px;
     border-radius:5px 5px 0 0;
-    background-color: crimson;
+    background-color: rgb(237, 39, 78);
 }
 
 .day .status {
     padding: 5px;
 }
 
-@media screen and (max-width: 997px) {
+@media screen and (max-width: 1140px) {
     li.weekly-view {
         display: flex;
         flex-direction: column;
-        align-items: center;
     }
 
     .weekly-calender {
+        grid-template-columns: repeat(5, 1fr) !important;
         margin-top: 20px;
         gap: 10px;
+    }
+    .weekly-view .title {
+        width: 100%;
     }
 }
