@@ -132,7 +132,6 @@ const updateHabbitStatus = async (req, res) => {
   try {
     const habbit = await Habbit.findById(id);
     const { dates } = habbit;
-    console.log(dates);
     let found = false;
     dates.find((item, index) => {
       if (item.date === date) {
@@ -156,7 +155,17 @@ const updateHabbitStatus = async (req, res) => {
   }
 };
 
-const deleteHabbit = (req, res) => {};
+const deleteHabbit = async (req, res) => {
+  try {
+    const habbit = await Habbit.findByIdAndDelete(req.params.id);
+    if (!habbit) {
+      return res.status(404).json({ message: 'Habbit Not Found' });
+    }
+    res.redirect('back');
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
 
 module.exports = {
   dashboardController,

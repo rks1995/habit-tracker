@@ -60,7 +60,7 @@
                 <h1>
                     <%= habbits[i].content %>
                 </h1>
-                <a href="/user/dashboard/:id">
+                <a href="/user/dashboard/<%= habbits[i].id %>">
                     <i class="fa-solid fa-trash delete"></i>
                 </a>
             </li>
@@ -73,7 +73,7 @@
                     <span class="habbit-name">
                         <%= habbits[i].content %>
                     </span>
-                    <a href="/user/dashboard/:id">
+                    <a href="/user/dashboard/<%= habbits[i].id %>">
                         <i class="fa-solid fa-trash delete"></i>
                     </a>
                 </div>
@@ -117,7 +117,7 @@
             <% } %>
         </ul>
         <% } else { %>
-        <h1>Add Habbits</h1>
+        <h1 style="text-align: center; margin-top: 30px;">Add New Habbit</h1>
         <% } %>
     </div>
 </div>
