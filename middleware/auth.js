@@ -14,7 +14,8 @@ const authMiddleware = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
-    res.redirect('/login');
+    res.clearCookie('tokenKey');
+    res.redirect('/');
   }
 };
 
