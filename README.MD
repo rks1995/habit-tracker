@@ -1,5 +1,10 @@
 # Habbit Tracker App
 
+### ScreenShots
+
+<img src="./assets/HomePage.png" width:"200">
+<img src="./assets/DashBoard.png" width:"200">
+
 #### Tech Used
 
 1. Nodejs
@@ -9,39 +14,16 @@
 
 #### Folder Structure
 
-├── assets
-│---└── css
-│--------└── dashboard.css
-│--------└── home.css
-│--------└── layout.css
-│--------└── register.css
-│---├── Home_Image.jpeg
-├── contollers
-│-----└── homeController.js
-│-----└── userController.js
-├── db
-│-----└── config.js
-├── error
-│-----└── notFound.js
-├── middleware
-│-----├── auth.js
-│-----└── destroyToken.js
-├── models
-│-----├── habbits.js
-│-----└── user.js
-├── node_modules
-├── routes
-│ --- ├── index.js
-│ --- └── user.js
-├── views
-│ --- ├── dashboard.ejs
-│ --- ├── error.ejs
-│ --- ├── home.ejs
-│ --- ├── layout.ejs
-│ --- ├── register.ejs
-│ --- ├── signin.ejs
-├── .gitignore
-├── app.js
-├── package.json
-├── package-lock.json
-└── README.md
+|-assets
+|-controllers  
+|-db
+|-error
+|-middleware
+|-models
+|-routes
+|-views
+|-gitignore
+|-app.js
+|-package-lock-json
+|-package.json
+|-README.MD
